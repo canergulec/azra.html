@@ -3,127 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seni Seviyorum Azra ❤️</title>
+    <title>Azra - Özür Dilerim</title>
+    <!-- Modern ve şık bir görünüm için Google Fonts'tan Poppins fontunu ekliyoruz -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #ffeff0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
+            /* Açık pembe tonlarında modern bir degrade arka plan */
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            font-family: 'Poppins', sans-serif;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 0;
             overflow: hidden;
+            color: #590d22;
         }
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(255, 100, 100, 0.2);
-            max-width: 500px;
+
+        .card {
+            /* Yarı saydam beyaz arka plan ile hafif cam efekti (glassmorphism) */
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(255, 143, 163, 0.2);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
             z-index: 10;
         }
-        h1 { color: #ff4757; }
-        p { color: #57606f; font-size: 18px; line-height: 1.6; }
-        .btn-container {
-            margin-top: 30px;
+
+        h1 {
+            font-weight: 600;
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #ff4d6d;
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #800f2f;
+        }
+
+        .buttons {
             position: relative;
-            height: 60px;
+            height: 50px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
         }
+
         button {
-            font-size: 18px;
-            padding: 10px 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 30px;
             border: none;
-            border-radius: 50px;
+            border-radius: 12px;
             cursor: pointer;
-            font-weight: bold;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
         }
-        #evet {
-            background-color: #2ed573;
-            color: white;
-            box-shadow: 0 4px 15px rgba(46, 213, 115, 0.4);
-            z-index: 2;
+
+        .btn-yes {
+            background-color: #ff4d6d;
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3);
         }
-        #evet:hover { transform: scale(1.1); }
-        #hayir {
-            background-color: #ff4757;
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
-            z-index: 5;
+
+        .btn-yes:hover {
+            background-color: #c9184a;
+            transform: translateY(-2px);
         }
-        #success-msg {
+
+        .btn-no {
+            background-color: #fff0f3;
+            color: #ff4d6d;
+            border: 2px solid #ff4d6d;
+        }
+
+        #success-message {
             display: none;
-            margin-top: 20px;
-            color: #ff4757;
-            font-size: 24px;
-            font-weight: bold;
         }
-        /* Arka planda uçuşan kalpler için animasyon */
-        .heart {
-            position: absolute;
-            font-size: 20px;
-            color: #ff4757;
-            opacity: 0.5;
-            animation: float 4s ease-in infinite;
+
+        #success-message h1 {
+            color: #c9184a;
         }
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(0); opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+
+        #success-message p {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 0;
         }
     </style>
 </head>
 <body>
 
-    <div class="container" id="main-container">
-        <h1>Özür Dilerim Azra 🥺</h1>
-        <p>Seni kırdığım için gerçekten çok üzgünüm. İnan ki niyetim asla seni üzmek değildi. Benim için çok değerlisin ve o güzel yüzünün asılması beni mahvediyor. Tüm kalbimle özür dilerim.</p>
-        <p><strong>Beni affediyor musun?</strong></p>
-        
-        <div class="btn-container">
-            <button id="evet" onclick="affetti()">Evet, affettim ❤️</button>
-            <button id="hayir" onmouseover="kac()" onclick="kac()">Hayır!</button>
+    <!-- İlk Ekran: Özür Mesajı ve Butonlar -->
+    <div class="card" id="main-content">
+        <h1>Özür Dilerim Azra</h1>
+        <p>Yaşananlar için gerçekten üzgünüm. Seni kırmak istemezdim, hatamın farkındayım. Lütfen bu tatsızlığı geride bırakmamıza izin ver.</p>
+        <p style="font-weight: 600;">Beni affediyor musun?</p>
+        <div class="buttons">
+            <button class="btn-yes" onclick="affetti()">Evet</button>
+            <button class="btn-no" id="btnNo" onmouseover="kac()" onclick="kac()">Hayır</button>
         </div>
-        <div id="success-msg">Biliyordum! Seni dünyalar kadar seviyorum! 🥰🎉</div>
+    </div>
+
+    <!-- İkinci Ekran: Evet'e Tıklandığında Çıkacak Mesaj -->
+    <div class="card" id="success-message">
+        <h1>Teşekkür Ederim</h1>
+        <p>Anlayışın için çok sağ ol. Bunu telafi edeceğime söz veriyorum. 😊</p>
     </div>
 
     <script>
-        // Arka planda uçuşan kalpler oluşturur
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.classList.add('heart');
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 5000);
-        }
-        setInterval(createHeart, 300);
+        const btnNo = document.getElementById('btnNo');
 
-        // 'Hayır' butonunu fare yaklaşınca kaçırır
-        const hayirBtn = document.getElementById('hayir');
+        // 'Hayır' butonunu ekranda rastgele kaçıran fonksiyon
         function kac() {
-            // Ekran sınırları içinde rastgele bir pozisyon hesaplar
-            const x = Math.random() * (window.innerWidth - hayirBtn.offsetWidth - 50);
-            const y = Math.random() * (window.innerHeight - hayirBtn.offsetHeight - 50);
-            hayirBtn.style.position = 'fixed';
-            hayirBtn.style.left = x + 'px';
-            hayirBtn.style.top = y + 'px';
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth - 40);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight - 40);
+            
+            btnNo.style.position = 'fixed';
+            btnNo.style.left = `${x}px`;
+            btnNo.style.top = `${y}px`;
         }
 
-        // 'Evet' butonuna basıldığında çalışır
+        // 'Evet' butonuna tıklandığında ekranı değiştiren fonksiyon
         function affetti() {
-            document.querySelector('.btn-container').style.display = 'none';
-            document.getElementById('success-msg').style.display = 'block';
-            const paragraflar = document.querySelectorAll('p');
-            paragraflar[0].style.display = 'none';
-            paragraflar[1].style.display = 'none';
-            document.querySelector('h1').innerText = 'Teşekkür Ederim Canım! ❤️';
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+            
+            // Eğer buton ekranda bir yere kaçtıysa gizle
+            btnNo.style.display = 'none';
         }
     </script>
 </body>
