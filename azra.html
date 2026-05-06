@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seni Seviyorum Azra ❤️</title>
+    <style>
+        body {
+            background-color: #ffeff0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 100, 100, 0.2);
+            max-width: 500px;
+            z-index: 10;
+        }
+        h1 { color: #ff4757; }
+        p { color: #57606f; font-size: 18px; line-height: 1.6; }
+        .btn-container {
+            margin-top: 30px;
+            position: relative;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        #evet {
+            background-color: #2ed573;
+            color: white;
+            box-shadow: 0 4px 15px rgba(46, 213, 115, 0.4);
+            z-index: 2;
+        }
+        #evet:hover { transform: scale(1.1); }
+        #hayir {
+            background-color: #ff4757;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            z-index: 5;
+        }
+        #success-msg {
+            display: none;
+            margin-top: 20px;
+            color: #ff4757;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        /* Arka planda uçuşan kalpler için animasyon */
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4757;
+            opacity: 0.5;
+            animation: float 4s ease-in infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="main-container">
+        <h1>Özür Dilerim Azra 🥺</h1>
+        <p>Seni kırdığım için gerçekten çok üzgünüm. İnan ki niyetim asla seni üzmek değildi. Benim için çok değerlisin ve o güzel yüzünün asılması beni mahvediyor. Tüm kalbimle özür dilerim.</p>
+        <p><strong>Beni affediyor musun?</strong></p>
+        
+        <div class="btn-container">
+            <button id="evet" onclick="affetti()">Evet, affettim ❤️</button>
+            <button id="hayir" onmouseover="kac()" onclick="kac()">Hayır!</button>
+        </div>
+        <div id="success-msg">Biliyordum! Seni dünyalar kadar seviyorum! 🥰🎉</div>
+    </div>
+
+    <script>
+        // Arka planda uçuşan kalpler oluşturur
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 300);
+
+        // 'Hayır' butonunu fare yaklaşınca kaçırır
+        const hayirBtn = document.getElementById('hayir');
+        function kac() {
+            // Ekran sınırları içinde rastgele bir pozisyon hesaplar
+            const x = Math.random() * (window.innerWidth - hayirBtn.offsetWidth - 50);
+            const y = Math.random() * (window.innerHeight - hayirBtn.offsetHeight - 50);
+            hayirBtn.style.position = 'fixed';
+            hayirBtn.style.left = x + 'px';
+            hayirBtn.style.top = y + 'px';
+        }
+
+        // 'Evet' butonuna basıldığında çalışır
+        function affetti() {
+            document.querySelector('.btn-container').style.display = 'none';
+            document.getElementById('success-msg').style.display = 'block';
+            const paragraflar = document.querySelectorAll('p');
+            paragraflar[0].style.display = 'none';
+            paragraflar[1].style.display = 'none';
+            document.querySelector('h1').innerText = 'Teşekkür Ederim Canım! ❤️';
+        }
+    </script>
+</body>
+</html>
