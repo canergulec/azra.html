@@ -2,201 +2,133 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Azra - Özür Dilerim</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canım Annem</title>
     <style>
-        /* Orijinal iOS Sistem Fontları */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap');
+
         body {
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, sans-serif;
-            /* Aşk Teması: Daha sıcak, romantik ve pembe/kırmızı degrade arkaplan */
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            font-family: 'Poppins', sans-serif;
             overflow: hidden;
-            color: #1C1C1E;
-            position: relative;
-        }
-
-        /* Uçuşan Kalpler İçin CSS Animasyonu */
-        .heart-icon {
-            position: absolute;
-            bottom: -50px;
-            font-size: 24px;
-            z-index: 1;
-            animation: floatUp linear infinite;
-            opacity: 0.6;
-            filter: drop-shadow(0 2px 4px rgba(255,45,85,0.3));
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(0.8) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-110vh) scale(1.2) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* iOS Bildirim/Kart Tasarımı */
-        .ios-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 24px;
-            width: 320px;
-            padding: 32px 24px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(255, 45, 85, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
             z-index: 10;
+            backdrop-filter: blur(10px);
         }
 
         h1 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-            color: #FF2D55; /* Başlık Rengi */
+            font-family: 'Dancing Script', cursive;
+            color: #d81b60;
+            font-size: 3rem;
+            margin-bottom: 10px;
         }
 
         p {
-            font-size: 15px;
-            font-weight: 400;
-            color: #3A3A3C;
-            line-height: 1.5;
-            margin-bottom: 24px;
-            letter-spacing: -0.2px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
         }
 
-        .btn-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            position: relative;
-        }
-
-        /* iOS Buton Tasarımları */
-        button {
-            font-family: inherit;
-            font-size: 17px;
-            font-weight: 600;
-            border-radius: 14px;
-            padding: 14px;
+        .btn {
+            background-color: #d81b60;
+            color: white;
             border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.1s ease, background-color 0.2s;
-            width: 100%;
-            letter-spacing: -0.3px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.3);
         }
 
-        button:active {
-            transform: scale(0.96);
+        .btn:hover {
+            background-color: #ad1457;
+            transform: translateY(-2px);
         }
 
-        .btn-yes {
-            background-color: #FF2D55;
-            color: #FFFFFF;
-            box-shadow: 0 4px 12px rgba(255, 45, 85, 0.3);
-        }
-
-        .btn-no {
-            background-color: rgba(255, 45, 85, 0.1);
-            color: #FF2D55;
-        }
-
-        #success-message {
+        #message {
             display: none;
+            margin-top: 20px;
+            font-weight: 600;
+            color: #c2185b;
+            font-size: 1.2rem;
+            animation: fadeIn 1s ease-in-out;
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Uçuşan Kalpler için CSS */
+        .heart {
+            position: absolute;
+            color: #ff4081;
+            font-size: 1.5rem;
+            animation: floatUp 4s linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- İlk Ekran: Özür Mesajı ve Butonlar -->
-    <div class="ios-card" id="main-content">
-        <h1>Özür Dilerim Azra</h1>
-        <p>Yaşananlar için gerçekten üzgünüm. Seni kırmak istemezdim, hatamın farkındayım. Lütfen bu tatsızlığı geride bırakmamıza izin ver.</p>
-        <p style="font-weight: 600; color: #1C1C1E;">Beni affediyor musun?</p>
-        
-        <div class="btn-container" id="btn-container">
-            <button class="btn-yes" onclick="affetti()">Evet</button>
-            <button class="btn-no" id="btnNo" onmouseover="kac()" ontouchstart="kac()">Hayır</button>
-        </div>
-    </div>
-
-    <!-- İkinci Ekran: Başarı Mesajı -->
-    <div class="ios-card" id="success-message">
-        <h1>Teşekkür Ederim ❤️</h1>
-        <p>Anlayışın için çok sağ ol. Bunu telafi edeceğime söz veriyorum.😊</p>
+    <div class="card">
+        <h1>Anneler Günün Kutlu Olsun!</h1>
+        <p>Karşılıksız sevgin, sonsuz sabrın ve her zaman yanımda olduğun için teşekkür ederim. Sen dünyanın en harika annesisin!</p>
+        <button class="btn" onclick="showMessage()">Sana Özel Bir Mesaj</button>
+        <div id="message">İyi ki varsın, seni çok seviyorum! ❤️</div>
     </div>
 
     <script>
-        // --- Arka Planda Uçuşan Kalpler Algoritması ---
+        function showMessage() {
+            // Mesajı göster
+            document.getElementById("message").style.display = "block";
+            
+            // Kalp yağmuru başlat
+            for(let i = 0; i < 30; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+        }
+
         function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-icon');
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
             
-            // Rastgele kalp emojileri
-            const hearts = ['❤️', '💖', '💕', '💗', '💘'];
-            heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-            
-            // Ekranın rastgele bir yatay konumundan başlasın
-            heart.style.left = Math.random() * 100 + 'vw';
-            
-            // Rastgele uçuş süresi (3 ile 6 saniye arası)
-            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
-            
-            // Rastgele boyut
-            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+            // Ekranın rastgele bir yerinden başlat
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // 3 ile 5 saniye arası
             
             document.body.appendChild(heart);
-            
-            // Animasyon bitince elementi temizle
+
+            // Animasyon bitince kalbi DOM'dan temizle
             setTimeout(() => {
                 heart.remove();
-            }, 6000);
-        }
-
-        // Her 300 milisaniyede bir yeni kalp oluştur
-        setInterval(createHeart, 300);
-
-        // --- Kaçan "Hayır" Butonu Algoritması ---
-        const btnNo = document.getElementById('btnNo');
-
-        function kac() {
-            btnNo.style.position = 'fixed';
-            
-            // Güvenli alan (buton ekran dışına taşmasın diye)
-            const maxX = window.innerWidth - btnNo.offsetWidth - 20;
-            const maxY = window.innerHeight - btnNo.offsetHeight - 20;
-            
-            const randomX = Math.max(20, Math.floor(Math.random() * maxX));
-            const randomY = Math.max(20, Math.floor(Math.random() * maxY));
-            
-            btnNo.style.transition = "left 0.2s ease-out, top 0.2s ease-out";
-            btnNo.style.left = randomX + 'px';
-            btnNo.style.top = randomY + 'px';
-            btnNo.style.width = '150px';
-        }
-
-        // --- "Evet" Butonuna Tıklanınca ---
-        function affetti() {
-            document.getElementById('main-content').style.display = 'none';
-            document.getElementById('success-message').style.display = 'block';
-            btnNo.style.display = 'none'; // Kaçan butonu tamamen gizle
+            }, 5000);
         }
     </script>
+
 </body>
 </html>
